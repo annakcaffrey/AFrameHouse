@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--A-Frame Framework-->
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  
+
+</head>
+<body>
+<a-scene background="color: #ECECEC">
+
+  
+  
+    <!-- Asset manager -->
+    <a-assets>
+    <!-- sky -->
+    <img
+    crossorigin="anonymous"
+    id="day-sky"
+    src="https://cdn.glitch.com/da3c70f2-15da-4ad6-b1fb-c32a564dfafc%2Fgreen-hills-over-town.jpg?v=1618930227685"
+    />
+    <!-- wood -->
+    <img
+    crossorigin="anonymous"
+    id="wood"
+    src="https://cdn.glitch.com/e318dd99-71d2-43c4-b187-33a7c6759c79%2FwoodFloor.jpg?v=1591818436031"
+    />
+    <!-- wood normal -->
+    <img
+    crossorigin="anonymous"
+    id="wood-normal"
+    src="https://cdn.glitch.com/e318dd99-71d2-43c4-b187-33a7c6759c79%2FwoodFloorNormal.jpg?v=1591818442344"
+    />
+    <!-- concrete -->
+    <img
+    crossorigin="anonymous"
+    id="concrete"
+    src="https://cdn.glitch.com/e318dd99-71d2-43c4-b187-33a7c6759c79%2Fconcrete.png?v=1591818590543"
+    />
+    <!-- concrete normal -->
+    <img
+    crossorigin="anonymous"
+    id="concrete-normal"
+    src="https://cdn.glitch.com/e318dd99-71d2-43c4-b187-33a7c6759c79%2FconcreteNormal.png?v=1591818598718"
+    />
+    <!-- brick -->
+    <img
+    crossorigin="anonymous"
+    id="brick"
+    src="https://cdn.glitch.com/da3c70f2-15da-4ad6-b1fb-c32a564dfafc%2Fwhite-brick-wall-texture-background-40999667.jpeg?v=1619008750879"
+    />
+    <!-- brick roughness -->
+    <img
+    crossorigin="anonymous"
+    id="brick-roughness"
+    src="https://cdn.glitch.com/e318dd99-71d2-43c4-b187-33a7c6759c79%2Fbrick_roughness.jpg?v=1593160043464"
+    />
+    <!-- tile -->
+    <img
+    crossorigin="anonymous"
+    id="tile"
+    src="https://cdn.glitch.com/e318dd99-71d2-43c4-b187-33a7c6759c79%2FTexturesCom_Pavement_Medieval_512_albedo.jpg?v=1591865660715"
+    />
+    <!-- tile normal -->
+    <img
+    crossorigin="anonymous"
+    id="tile-normal"
+    src="https://cdn.glitch.com/e318dd99-71d2-43c4-b187-33a7c6759c79%2FTexturesCom_Pavement_Medieval_512_normal.jpg?v=1591865668506"
+    />
+    <!-- leather -->
+    <img
+    crossorigin="anonymous"
+    id="leather"
+    src="https://cdn.glitch.com/e318dd99-71d2-43c4-b187-33a7c6759c79%2Fleather.jpg?v=1592904159769"
+    />
+    <!-- leather-normal -->
+    <img
+    crossorigin="anonymous"
+    id="leather-normal"
+    src="https://cdn.glitch.com/e318dd99-71d2-43c4-b187-33a7c6759c79%2FleatherNormal.jpg?v=1592904184431"
+    />
+    </a-assets>
+  
+        <!-- environment -->
+      <a-entity
+      environment="preset: forest; skyType: none; fog: 0; lighting: none"
+      position="0 -0.01 0"
+      ></a-entity>
+      <!-- custom lighting -->
+      <a-entity id="lighting">
+      <a-entity
+      light="type: point; color: white; intensity: 0.4; castShadow: true"
+      position="0 2.6 0"
+      ></a-entity>
+      <a-entity
+      light="intensity: 0.6; castShadow: true"
+      position="-6.2892 5.76874 -7.95738"
+      ></a-entity>
+      </a-entity>
+  
+  <!--lets make a house-->
+  
+    <a-entity id="house">
+      
+           <!-- wall -->
+          <a-entity class="wall" position="0 1.5 2.5" rotation="0 0 0">
+          <a-box
+          scale="5 3 0.1"
+          shadow
+          material="src: #brick;
+                    repeat: 2.5 2;
+                    roughness-map: #brick-roughness;
+                    roughnessTextureRepeat: 2.5 2;
+                    roughness: 0.9;
+                    metalness: 0"
+          >
+          </a-box>
+          </a-entity>
+      
+          <!-- wall -->
+          <a-entity class="wall" position="2.5 1.5 0" rotation="0 90 0">
+          <a-box
+          scale="5 3 0.1"
+          shadow
+          material="src: #brick;
+                          repeat: 2.5 2;
+                          roughness-map: #brick-roughness;
+                          roughnessTextureRepeat: 2.5 2;
+                          roughness: 0.9;
+                          metalness: 0"
+          >
+          </a-box>
+          </a-entity>
+      
+      <!-- wall with window -->
+        <a-entity class="wall-with-window" position="0 0 0">
+        <a-box
+        position="0 0.5 -2.5"
+        scale="5 1 0.1"
+        shadow
+        material="src: #brick;
+                  repeat: 2.5 0.5;
+                  roughness-map: #brick-roughness;
+                  roughnessTextureRepeat: 2.5 0.5;
+                  roughness: 0.9;
+                  metalness: 0"
+        >
+        </a-box>
+        <a-box
+        position="0 2.5 -2.5"
+        scale="5 1 0.1"
+        shadow
+        material="src: #brick;
+                  repeat: 2.5 0.5;
+                  roughness-map: #brick-roughness;
+                  roughnessTextureRepeat: 2.5 0.5;
+                  roughness: 0.9;
+                  metalness: 0"
+        >
+        </a-box>
+        <a-box
+        position="1.5 1.5 -2.5"
+        scale="0 0 0.1"
+        shadow
+        material="src: #brick;
+                  repeat: 1.5 0.5;
+                  roughness-map: #brick-roughness;
+                  roughnessTextureRepeat: 2.5 0.5;
+                  roughness: 0.9;
+                  metalness: 0"
+                  >
+        </a-box>
+        <a-box
+        position="4 1.5 -2.5"
+        scale="2 1 0.1"
+        shadow
+        material="src: #brick;
+                  repeat: 1.5 0.5;
+                  roughness-map: #brick-roughness;
+                  roughnessTextureRepeat: 2.5 0.5;
+                  roughness: 0.9;
+                  metalness: 0"
+        >
+        </a-box>
+        <a-box
+        class="window"
+        position="1 1.5 -2.5"
+        scale="8 1 0.1"
+        material="opacity: 0.5;
+                  sphericalEnvMap: #day-sky;
+                  roughness: 0;
+                  metalness: 1"
+        >
+        </a-box>
+        </a-entity>
+      
+      <!-- wall with door -->
+          <a-entity class="wall-with-door" shadow>
+          <a-box
+          position="-2.5 2.5 0"
+          rotation="0 90 0" scale="5 1 0.1"
+          material="src: #brick;
+                    repeat: 2.5 0.5; 
+                    roughness-map: #brick-roughness; r
+                    oughnessTextureRepeat: 2.5 0.5; 
+                    roughness: 0.9; 
+                    metalness: 0"
+                 >
+          </a-box>
+          <a-box
+          position="-2.5 1.5 0.75"
+          rotation="0 90 0" scale="3.5 1 0.1"
+          material="src: #brick; 
+                    repeat: 2.5 0.5; 
+                    roughness-map: #brick-roughness; 
+                    roughnessTextureRepeat: 2.5 0.5; 
+                    roughness: 0.9; 
+                    metalness: 0">
+          </a-box>
+          <a-box
+          position="-2.5 0.5 0.75"
+          rotation="0 90 0" scale="3.5 1 0.1"
+          material="src: #brick; 
+                    repeat: 2.5 0.5; 
+                    roughness-map: #brick-roughness; 
+                    roughnessTextureRepeat: 2.5 0.5; 
+                    roughness: 0.9; 
+                    metalness: 0">
+          </a-box>
+          <a-box
+          position="-2.5 1.5 -2.25"
+          rotation="0 90 0" scale="0.5 1 0.1"
+          material="src: #brick; 
+                    repeat: 0.5 0.5; 
+                    roughness-map: #brick-roughness; 
+                    roughnessTextureRepeat: 2.5 0.5; 
+                    roughness: 0.9; 
+                    metalness: 0">
+          </a-box>
+          <a-box
+          position="-2.5 0.5 -2.25"
+          rotation="0 90 0" scale="0.5 1 0.1"
+          material="src: #brick; 
+                    repeat: 0.5 0.5; 
+                    roughness-map: #brick-roughness; 
+                    roughnessTextureRepeat: 2.5 0.5; 
+                    roughness: 0.9; 
+                    metalness: 0">
+          </a-box>
+          </a-entity>
+      
+         <!-- roof -->
+              <a-entity class="roof">
+              <a-entity
+              position="0 3.75 0"
+              rotation="0 45 0"
+              scale="3.5 1.53 3.5"
+              material="color: white;
+                        src: #wood;
+                        repeat: 2.5 2.5;
+                        roughness: 0.4;
+                        normal-map: #wood-normal;
+                        normalTextureRepeat: 5 5;
+                        side: front"
+              shadow
+              geometry="primitive: cone;
+                        openEnded: false;
+                        segmentsRadial: 4"
+              ></a-entity>
+              </a-entity>
+      
+      <!-- table -->
+      
+              <a-entity class="table" shadow>
+              <a-box
+              material="color: white;
+              src: #wood;
+              repeat: 1 1;
+              normal-map: #wood-normal;
+              normal-texture-repeat: 1 1;
+              roughness: 0.6"
+              position="2 0.25 -2"
+              >
+              <a-box
+              material="color: white;
+              src: #concrete;
+              repeat: 1 1;
+              normal-map: #concrete-normal;
+              normal-texture-repeat: 1 1;
+              roughness: 0.6"
+              position="2 0.55 0"
+              scale="1 0.1 1"
+              >
+              </a-box>
+              </a-box>
+              </a-entity>
+      
+              
+      
+      <!-- chair -->
+              <a-entity class="chair" shadow>
+              <a-box
+              position="0 0.5 1.85031"
+              scale="1 0.4 0.75"
+              material="src: #leather; normalMap: #leather-normal"
+              >
+              </a-box>
+              <a-box
+              position="0 0.5 1.85031"
+              scale="1 1 -0.08"
+              material="src: #leather; normalMap: #leather-normal"
+              >
+              </a-box>
+              <a-box
+              position="0.61 0.5 1.5"
+              scale="0.25 0.69 0.75"
+              material="src: #leather; normalMap: #leather-normal"
+              >
+              </a-box>
+              <a-box
+              position="-0.61 0.5 1.5"
+              scale="0.25 0.69 0.75"
+              material="src: #leather; normalMap: #leather-normal"
+              >
+              </a-box>
+              </a-entity>
+      
+      <!--cup-->
+      <a-entity id="cup" position= "2 1 -1.8" shadow>
+        <a-entity geometry= "primitive: cone; height: 0.3; segmentsHeight: 16;
+                             openEnded: true; radiusBottom: 0.11; radiusTop: 0.15"
+                  material="side: double; color: blue"
+        ></a-entity>
+        <a-entity
+                  geometry= "primitive: circle; radius: 0.11"
+                  rotation= "-90 0 0"
+                  position= "0 -0.13 0"
+                  material= "color: blue"
+                  >
+        </a-entity>
+              
+      
+       </a-entity>
+      
+      <!--jug-->
+      
+      <a-entity id ="jug" position="1.75 0.8 -2.0" shadow>
+        
+        <a-entity
+                  geometry= "primitive: cone; radiusBottom: 0.2; radiusTop: 0.1; height: 0.5"
+                  material= "roughness: 1; metalness: 0; color: yellow"
+                  position= "0 0.25 0"
+                  scale= "0.75 0.75 0.75"
+                  ></a-entity>
+        <a-entity
+                  geometry= "primitive: ring; radiusInner: 0.12; radiusOuter: 0.18; segmentsPhi: 9; segmentsTheta: 3; thetaLenght: 90; thetaStart: 0.63"
+                  material="roughness: 1; metalness: 0; color: black; side: double"
+                  scale= "1.38 1.57 1"
+                  position= "0.1 0.2"
+                  ></a-entity>
+        <a-entity
+                  geometry= "primitive: ring; radiusInner:0.12; radiusOuter: 0.18; segmentsPhi: 9; segmentsTheta:3; thetaLength: 90; thetaStart: 0.63 "
+                  material= "roughness: 1; metalness: 0; color: black; side: double"
+                  scale= "1.38 1.57 1"
+                  position= "0.1 0.2"
+                  ></a-entity>
+        <a-entity
+                  geometry= "primitive: ring; segmentsTheta: 36; radiusInner: 0.12; radiusOuter: 0.18; thetaStart: 0.63; thetaLength: 90; segmentsPhi: 9"
+                  material= "roughness: .2; metalness: 0.6; sphericalEnvMap: #day-sky; side: double"
+                  scale= "1.38 1.57 1"
+                  rotation= "0 0 180"
+                  position= "0 0.45 0"
+                  ></a-entity>
+      </a-entity>
+      
+      <!-- wall -->
+              <a-entity class="wall" position="0 1.5 2.5" rotation="0 0 0">
+              <a-box
+              scale="5 3 0.1"
+              shadow
+              material="src: #brick;
+              repeat: 2.5 2;
+              roughness-map: #brick-roughness;
+              roughnessTextureRepeat: 2.5 2;
+              roughness: 0.9;
+              metalness: 0"
+              >
+              </a-box>
+</a-entity>
+      
+      <!-- floor -->
+      <a-plane
+      position="0 0 0"
+      rotation="-90 0 0"
+      scale="5 5 1"
+      material="color: white;
+                src: #tile;
+                repeat: 2.5 2.5;
+                normal-map: #tile-normal;
+                normal-texture-repeat: 2.5 2.5;
+                roughness: 0.4;
+                metalness: 0"
+      shadow
+      ></a-plane>
+      
+    </a-entity>
+  
+  
+ <a-sky src = "#day-sky"></a-sky>
+  
+</a-scene>
+</body>
+</html>
